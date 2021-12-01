@@ -3,7 +3,6 @@ from typing import List
 
 # Q1
 def count_increasing(levels: List[int]) -> int:
-    levels = list(map(int, levels))
     return sum(1 for i in range(len(levels)-1) if levels[i] < levels[i+1])
 
 # Q2
@@ -11,7 +10,6 @@ def three(levels: List[int], index: int) -> int:
     return sum(e for e in levels[index:index+3])
 
 def count_increasing_threes(levels: List[int]) -> int:
-    levels = list(map(int, levels))
     return sum(1 for i in range(len(levels)-3) if three(levels, i) < three(levels, i+1))
 
 if __name__ == '__main__':
