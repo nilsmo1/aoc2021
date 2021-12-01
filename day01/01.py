@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
     with open('puzzle-input', 'r') as RAW:
         formatted = [int(line.strip()) for line in RAW]
-    # Q1
+    # Q1: 1754
     print(f'Q1: {count_increasing(formatted)}')
-    # Q2
+    # Q2: 1789
     print(f'Q2: {count_increasing_threes(formatted)}')
