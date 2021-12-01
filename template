@@ -18,4 +18,3 @@ if __name__ == '__main__':
     # Results
     print(f'Q1: ')
     print(f'Q2: ')
-
