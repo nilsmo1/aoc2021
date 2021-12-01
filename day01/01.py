@@ -3,22 +3,16 @@ from typing import List
 
 # Q1
 def count_increasing(levels: List[int]) -> int:
-    total = 0
-    for i in range(1, len(levels)):
-        if levels[i] > levels[i-1]: 
-            total += 1
-    return total
+    levels = list(map(int, levels))
+    return sum(1 for i in range(len(levels)-1) if levels[i] < levels[i+1])
 
 # Q2
-def three_measurement_window(levels: List[int], index: int) -> int:
-    return sum(levels[i] for i in (index, index+1, index+2))
+def three(levels: List[int], index: int) -> int:
+    return sum(e for e in levels[index:index+3])
 
 def count_increasing_threes(levels: List[int]) -> int:
-    total = 0
-    for i in range(len(levels)-3):
-        if three_measurement_window(levels, i) < three_measurement_window(levels, i+1):
-            total += 1
-    return total
+    levels = list(map(int, levels))
+    return sum(1 for i in range(len(levels)-3) if three(levels, i) < three(levels, i+1))
 
 if __name__ == '__main__':
     # Samples
