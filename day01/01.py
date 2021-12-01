@@ -22,7 +22,9 @@ if __name__ == '__main__':
     with open('sample1', 'r') as sample:
         sample_input = [int(line.strip()) for line in sample]
     assert(count_increasing(sample_input) == 7)
+    assert(count_increasing_threes(sample_input) == 5)
+
     with open('puzzle-input', 'r') as RAW:
         formatted = [int(line.strip()) for line in RAW]
-    print(count_increasing(formatted))
-    print(count_increasing_threes(formatted))
+    print(f'Q1: {count_increasing(formatted)}')
+    print(f'Q2: {count_increasing_threes(formatted)}')
