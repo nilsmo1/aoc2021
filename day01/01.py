@@ -16,9 +16,12 @@ if __name__ == '__main__':
     # Samples
     with open('sample', 'r') as sample:
         sample_input = [int(line.strip()) for line in sample]
+    
+    # Tests
     assert(count_increasing(sample_input) == 7)
     assert(count_increasing_threes(sample_input) == 5)
-
+    
+    # Puzzle input
     with open('puzzle-input', 'r') as RAW:
         formatted = [int(line.strip()) for line in RAW]
     # Q1: 1754
