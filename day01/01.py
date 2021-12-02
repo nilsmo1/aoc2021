@@ -1,4 +1,5 @@
 # Day 1, Sonar Sweep
+
 from typing import List
 
 # Q1
@@ -18,8 +19,8 @@ if __name__ == '__main__':
         sample_input = [int(line.strip()) for line in sample]
     
     # Tests
-    assert(count_increasing(sample_input) == 7)
-    assert(count_increasing_threes(sample_input) == 5)
+    assert count_increasing(sample_input) == 7
+    assert count_increasing_threes(sample_input) == 5
     
     # Puzzle input
     with open('puzzle-input', 'r') as RAW:
