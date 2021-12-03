@@ -14,26 +14,22 @@ def epsilon_gamma_product(nums: List[str]) -> int:
 
 # Q2
 def oxygen(nums: List[str]) -> int:
-    pos = 0
-    col_size = len(nums[0])
+    pos, col_size = 0, len(nums[0])
     while pos < col_size:
         col = [nums[row][pos] for row in range(len(nums))]
         max_count = '1' if col.count('1') >= col.count('0') else '0'
         nums = list(filter(lambda x: x[pos] == max_count, nums))
+        if len(nums) == 1: return int(nums[0], 2)
         pos += 1
-        if len(nums) == 1:
-            return int(nums[0], 2)
-            
+
 def co2(nums: List[str]) -> int:
-    pos = 0
-    col_size = len(nums[0])
+    pos, col_size = 0, len(nums[0])
     while pos < col_size:
         col = [nums[row][pos] for row in range(len(nums))]
         max_count = '1' if col.count('1') < col.count('0') else '0'
         nums = list(filter(lambda x: x[pos] == max_count, nums))
+        if len(nums) == 1: return int(nums[0], 2)
         pos += 1
-        if len(nums) == 1:
-            return int(nums[0], 2)
 
 if __name__ == '__main__':
     # Samples
