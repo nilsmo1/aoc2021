@@ -39,6 +39,7 @@ if __name__ == '__main__':
     
     # Tests
     assert parse(sample_input) == 150
+
     assert parse2(sample_input) == 900
 
     # Puzzle input
@@ -48,4 +49,3 @@ if __name__ == '__main__':
     # Results
     print(f'Q1: {parse(formatted)}')
     print(f'Q2: {parse2(formatted)}')
-

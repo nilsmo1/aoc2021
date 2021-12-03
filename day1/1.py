@@ -20,6 +20,7 @@ if __name__ == '__main__':
     
     # Tests
     assert count_increasing(sample_input) == 7
+
     assert count_increasing_threes(sample_input) == 5
     
     # Puzzle input
