@@ -9,10 +9,10 @@ class BingoBoard:
         self.bingo_flag = False
 
     @property
-    def get_bingo_flag(self):
+    def get_bingo_flag(self) -> bool:
         return self.bingo_flag
 
-    def set_bingo_flag(self):
+    def set_bingo_flag(self) -> None:
         self.bingo_flag = True
 
     def winner(self, shown: List[int]) -> bool:
