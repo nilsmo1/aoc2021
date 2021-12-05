@@ -7,6 +7,8 @@ class BingoBoard:
     def __init__(self, layout: Board) -> None:
         self.layout = [row for row in layout if row]
         self.bingo_flag = False
+        self.cols  = [[row[i] for row in self.layout] 
+                       for i in range(len(self.layout[0]))]
 
     @property
     def get_bingo_flag(self) -> bool:
@@ -16,9 +18,7 @@ class BingoBoard:
         self.bingo_flag = True
 
     def winner(self, shown: List[int]) -> bool:
-        cols  = [[row[i] for row in self.layout] for i in range(len(self.layout[0]))]
-        rows  = self.layout
-        for row, col in zip(cols, rows):
+        for row, col in zip(self.layout, self.cols):
             if all(e in shown for e in row) or all(e in shown for e in col):
                 return True
 
