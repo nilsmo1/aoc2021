@@ -22,7 +22,7 @@ I've included a template which I use for my code to have a consistent structure 
 ## Script for starting a new day 
 The file **NEWDAY.sh** is a template script which takes in the number of a day and creates a folder for that day. It creates the needed files and uses `curl` to download that day's puzzle input into the __puzzle-input__ file. 
 To use this script you need to replace the "__?__" in:
-```bash
+```sh
 curl -o puzzle-input -b 'session=?' https://adventofcode.com/2021/day/$1/input
 ```
 With the value of your own session cookie.
