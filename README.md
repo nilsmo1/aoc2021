@@ -19,7 +19,7 @@ To use this repo as I intended, you should only need `curl` and some version of 
 ## Code template
 I've included a template which I use for my code to have a consistent structure of each day's solution.
 
-## Script for downloading the puzzle-input
+## Script for starting a new day 
 The file **NEWDAY.sh** is a template script which takes in the number of a day and creates a folder for that day. It creates the needed files and uses `curl` to download that day's puzzle input into the __puzzle-input__ file. 
 To use this script you need to replace the "__?__" in:
 ```sh
