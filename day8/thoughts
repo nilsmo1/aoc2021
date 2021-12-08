@@ -1,0 +1,68 @@
+  0:      1:      2:      3:      4:
+ aaaa    ....    aaaa    aaaa    ....
+b    c  .    c  .    c  .    c  b    c
+b    c  .    c  .    c  .    c  b    c
+ ....    ....    dddd    dddd    dddd
+e    f  .    f  e    .  .    f  .    f
+e    f  .    f  e    .  .    f  .    f
+ gggg    ....    gggg    gggg    ....
+
+  5:      6:      7:      8:      9:
+ aaaa    aaaa    aaaa    aaaa    aaaa
+b    .  b    .  .    c  b    c  b    c
+b    .  b    .  .    c  b    c  b    c
+ dddd    dddd    ....    dddd    dddd
+.    f  e    f  .    f  e    f  .    f
+.    f  e    f  .    f  e    f  .    f
+ gggg    gggg    ....    gggg    gggg
+
+len 2
+    1 : cf
+
+len 3
+    7 : acf
+
+len 4
+    4 : bcdf
+
+len 5:
+    2 : acdeg
+    3 : acdfg
+    5 : abdfg
+
+len 6:
+    0 : abcefg
+    6 : abdefg
+    9 : abcdfg
+
+len 7:
+    8 : abcdefg
+
+Logic:
+IN = strings before "|"
+OUT = strings after "|"
+DICT = empty dictionary which is gonna be filled with numbers as keys and the corresponding string as value
+for string in IN:
+    add strings of length 2, 3, 4, 7 to DICT (they correspond to 1, 7, 4, 8)
+
+for string of length 5 in IN:
+    if string contains all letters from 7, then it must be a 3.
+    if string contains both letters from 4 which are not in 1, then it must be a 5.
+    else it must be a 2, because no other numbers have length 5.
+
+for string of length 6 in IN:
+    if string does not contain both letters from 1, it must be a 6, because 0 and 9 contain both letters from 1.
+    if string contains all both letters from 4 which are not in 1, it must be a 9.
+    else it must be a 0.
+
+Now we should have all of the numbers and their corresponding strings in our DICT.
+
+From here we can just compare the strings in OUT with the DICT.
+LIST = empty list for out final output
+for string in OUT:
+    for key in DICT:
+        if the sorted string is equal to the sorted version of DICT[key].
+            add key casted to string to LIST
+
+Now we just concatenate the strings in LIST and cast them to an int.
+There we have the final combination of numbers.
