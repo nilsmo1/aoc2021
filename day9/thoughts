@@ -1,0 +1,2 @@
+Basins are surrounded by 9s.
+Therefore we should be able to start at a low point and check all connected spots which aren't 9s.
