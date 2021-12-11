@@ -11,7 +11,7 @@ do
     fi
 
     cd "day$D" > /dev/null 2>&1 || exit 1
-    echo "DAY $day"
+    echo "-- DAY $day --"
     ANSWERS=$(python3 $D.py)
     echo $(echo $ANSWERS | awk '{print $1, $2}') 
     echo $(echo $ANSWERS | awk '{print $3, $4}')
