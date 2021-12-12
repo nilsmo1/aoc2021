@@ -1,6 +1,6 @@
 # Day 12, Passage Pathing
 
-from typing import List, Dict, Set
+from typing import List, Dict, Optional
 CaveDict = Dict[str, List[str]]
 
 def make_cave_dict(raw: List[List[str]]) -> CaveDict:
@@ -29,7 +29,7 @@ def paths(caves: CaveDict) -> int:
     return find_paths('start', 'end', [], caves)
 
 # Q2
-# TODO
+
 
 if __name__ == '__main__':
     # Samples
@@ -38,7 +38,7 @@ if __name__ == '__main__':
         sample_caves = make_cave_dict(sample_input)
 
     # Tests
-    assert paths(sample_caves) == 226
+    assert paths(sample_caves) == 226 
 
     # Puzzle input
     with open('puzzle-input', 'r') as RAW:
@@ -47,4 +47,4 @@ if __name__ == '__main__':
 
     # Results
     print(f'Q1: {paths(formatted_caves)}')
-    print(f'Q2: -')
+    print(f'Q2: --')
