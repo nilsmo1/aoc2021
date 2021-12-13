@@ -1,6 +1,6 @@
 # Day 12, Passage Pathing
 
-from typing import List, Dict, Optional
+from typing import List, Dict
 CaveDict = Dict[str, List[str]]
 
 def make_cave_dict(raw: List[List[str]]) -> CaveDict:
@@ -34,7 +34,6 @@ def find_paths_2(cave: str, end: str, current_path: List[str], caves: CaveDict, 
     ends = ['start', 'end']
     if cave == end:
         total += 1
-        #print(''.join(current_path))
         return total
     for neighbour in caves[cave]:
         if neighbour.islower():
@@ -59,7 +58,6 @@ def find_paths_2(cave: str, end: str, current_path: List[str], caves: CaveDict, 
                 current_path.append(cave)
                 total += find_paths_2(neighbour, end, current_path, caves)
                 current_path.pop()
-                
     return total
 
 if __name__ == '__main__':
