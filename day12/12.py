@@ -29,7 +29,38 @@ def paths(caves: CaveDict) -> int:
     return find_paths('start', 'end', [], caves)
 
 # Q2
-
+def find_paths_2(cave: str, end: str, current_path: List[str], caves: CaveDict, seen: bool=False) -> int:
+    total = 0
+    ends = ['start', 'end']
+    if cave == end:
+        total += 1
+        #print(''.join(current_path))
+        return total
+    for neighbour in caves[cave]:
+        if neighbour.islower():
+            if neighbour in current_path and not seen and neighbour not in ends:
+                current_path.append(cave)
+                total += find_paths_2(neighbour, end, current_path, caves, True)
+                current_path.pop()
+            elif neighbour not in current_path and seen:
+                current_path.append(cave)
+                total += find_paths_2(neighbour, end, current_path, caves, True)
+                current_path.pop()
+            elif neighbour not in current_path and not seen:
+                current_path.append(cave)
+                total += find_paths_2(neighbour, end, current_path, caves)
+                current_path.pop()
+        if neighbour.isupper():
+            if seen:
+                current_path.append(cave)
+                total += find_paths_2(neighbour, end, current_path, caves, True)
+                current_path.pop()
+            else:
+                current_path.append(cave)
+                total += find_paths_2(neighbour, end, current_path, caves)
+                current_path.pop()
+                
+    return total
 
 if __name__ == '__main__':
     # Samples
@@ -38,7 +69,9 @@ if __name__ == '__main__':
         sample_caves = make_cave_dict(sample_input)
 
     # Tests
-    assert paths(sample_caves) == 226 
+    assert paths(sample_caves) == 10
+
+    assert find_paths_2('start', 'end', [], sample_caves) == 36
 
     # Puzzle input
     with open('puzzle-input', 'r') as RAW:
@@ -47,4 +80,4 @@ if __name__ == '__main__':
 
     # Results
     print(f'Q1: {paths(formatted_caves)}')
-    print(f'Q2: --')
+    print(f'Q2: {find_paths_2("start", "end", [], formatted_caves)}')
