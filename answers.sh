@@ -12,9 +12,14 @@ do
 
     cd "day$D" > /dev/null 2>&1 || exit 1
     echo "-- DAY $day --"
-    ANSWERS=$(python3 $D.py)
-    echo $(echo $ANSWERS | awk '{print $1, $2}') 
-    echo $(echo $ANSWERS | awk '{print $3, $4}')
-    echo 
+    if [ $day -ne 13 ];
+    then
+        ANSWERS=$(python3 $D.py)
+        echo $(echo $ANSWERS | awk '{print $1, $2}') 
+        echo $(echo $ANSWERS | awk '{print $3, $4}')
+    else
+        echo "Run day13/13.py for a solution. Runtime too long!"
+    fi
+    echo
     cd ..
 done
