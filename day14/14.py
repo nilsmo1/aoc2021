@@ -7,8 +7,8 @@ Instruction = Tuple[str, str]
 
 def make_instruction_dict(raw: List[str]) -> Dict[Instruction, str]:
     instructions = {}
-    for fr, insertion in raw:
-        fr, to = fr
+    for inst, insertion in raw:
+        fr, to = inst
         instructions[(fr,to)] = insertion
     return instructions
 
@@ -24,7 +24,6 @@ def get_polymer(instructions: Dict[Instruction, str], template: Polymer, rounds:
         template = ''.join(new_polymer)
     return template
 
-
 def differance_least_most_common(polymer: Polymer) -> int:
     counts = Counter(polymer)
     return max(counts.values()) - min(counts.values())
@@ -36,16 +35,13 @@ def get_polymer_smart(instructions: Dict[Instruction, str], template: Polymer, r
         pairs[c,template[i+1]] += 1
     for r in range(rounds):
         new_pairs = defaultdict(int)
-        for pair in [pair for pair in pairs if pairs[pair]]:
-            c1, c2 = tuple(pair)
+        for c1, c2 in [pair for pair in pairs if pairs[pair]]:
             count = pairs[c1, c2]
-            pairs[c1, c2] -= count
             new_pairs[c1, instructions[c1,c2]] += count
             new_pairs[instructions[c1,c2], c2] += count
         pairs = new_pairs
-    chars = {c for t in pairs for c in t}
     counts = defaultdict(int)
-    for c in chars:
+    for c in {c for t in pairs for c in t}:
         for pair, val in pairs.items():
             if c == pair[0]: counts[c] += val
     counts[template[-1]]+=1
